@@ -10,10 +10,41 @@ import {
   loop,
 } from '@motion-canvas/core';
 
-const YELLOW = '#FFC66D';
-const RED = '#FF6470';
-const GREEN = '#99C47A';
-const BLUE = '#68ABDF';
+import { Code, LezerHighlighter } from '@motion-canvas/2d';
+//Code.defaultHighlighter = new LezerHighlighter(parser);
+
+import { parser } from '@lezer/php';
+
+import { HighlightStyle } from '@codemirror/language';
+import { tags } from '@lezer/highlight';
+
+
+const MyStyle = HighlightStyle.define([
+  { tag: tags.keyword, color: 'black' },
+  { tag: tags.function(tags.variableName), color: 'black' },
+  { tag: tags.number, color: 'black' },
+  { tag: tags.string, color: 'black' },
+  { tag: tags.color, color: 'black' },
+  { tag: tags.comment, color: 'gray' },
+  { tag: tags.lineComment, color: 'gray' },
+  { tag: tags.docComment, color: 'gray'},
+  { tag: tags.blockComment, color: 'gray'},
+  { tag: tags.comment, color: 'orange' },
+  // ...
+]);
+
+const MarkdownHighlighter = new LezerHighlighter(parser,MyStyle);
+
+const PURPLE = "#6f42c1";
+const GRAY = "#6a737d";
+const BLACK = "#24292e";
+const RED = "#d73a49";
+const ORANGE = "#e36209";
+const BLUE = "#005cc5";
+const DARK_BLUE = "#032f62";
+const WHITE = "#ffffff";
+const GREEN = "#22863a";
+
 
 export default makeScene2D(function* (view) {
   view.fontFamily(`'JetBrains Mono', monospace`).fontWeight(700).fontSize(256);
@@ -22,52 +53,54 @@ export default makeScene2D(function* (view) {
   const rotation = createSignal(0);
   const rotationScale = createSignal(0);
 
+  //  page number
+  const page = createRef<Txt>();
+  view.add(
+    <Txt ref={page} fill={DARK_BLUE} scale={0.2} offsetX={0} offsetY={-16}>
+      1
+    </Txt>,
+  );
+
+  view.add(
+    <Txt
+      ref={title}
+      scale={0.6}
+       rotation={() => -rotation() * rotationScale()}
+      fill={RED}
+    >
+      porth dili
+    </Txt>,
+  );
+ 
+  /*
   view.add(
     <Rect
-      cache
-      ref={backdrop}
-      width={'50%'}
-      height={'50%'}
-      fill={RED}
-      radius={40}
-      smoothCorners
-      rotation={() => rotation() * rotationScale()}
+    ref={backdrop}
+    width={'70%'}
+    height={'10%'}
+    offsetY={-2.4}
+    fill={GRAY}
+    radius={20}
+    smoothCorners
     >
-      <Txt
-        ref={title}
-        scale={0.5}
-        compositeOperation={'destination-out'}
-        rotation={() => -rotation() * rotationScale()}
-      >
-        START
-      </Txt>
-    </Rect>,
-  );
+    </Rect>
+    )
+    */
+    
 
-  yield* beginSlide('start');
-  yield* all(
-    backdrop().fill(GREEN, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('60%', 0.6),
-    title().text('CONTENT', 0.6),
+  const names = createRef<Code>();
+  view.add(
+    <Code
+      ref={names}
+      scale={0.18}
+      offsetX={0}
+      offsetY={-4}
+      highlighter={MarkdownHighlighter}
+      code={`\
+// murat berk yetiştirir 032290008
+// barış ışık            032290004`}
+    >
+    </Code>,
   );
-
-  yield* beginSlide('content');
-  const loopTask = yield loop(Infinity, () => rotation(-5, 1).to(5, 1));
-  yield* all(
-    backdrop().fill(BLUE, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('70%', 0.6),
-    title().text('ANIMATION', 0.6),
-    rotationScale(1, 0.6),
-  );
-
-  yield* beginSlide('animation');
-  yield* all(
-    backdrop().fill(YELLOW, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('50%', 0.6),
-    title().text('FINISH', 0.6),
-    rotationScale(0, 0.6),
-  );
-  cancel(loopTask);
-
   yield* beginSlide('finish');
 });
