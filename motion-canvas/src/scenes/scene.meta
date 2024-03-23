@@ -1,0 +1,50 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "signal",
+      "targetTime": 1
+    },
+    {
+      "name": "name_radius",
+      "targetTime": 2.1
+    },
+    {
+      "name": "name_3",
+      "targetTime": 2.4
+    },
+    {
+      "name": "callback",
+      "targetTime": 3.8999999999999995
+    },
+    {
+      "name": "invoke",
+      "targetTime": 5.1
+    },
+    {
+      "name": "of_course",
+      "targetTime": 5.3999999999999995
+    },
+    {
+      "name": "text",
+      "targetTime": 5.699999999999999
+    },
+    {
+      "name": "hardcoded",
+      "targetTime": 7.199999999999999
+    },
+    {
+      "name": "text_callback",
+      "targetTime": 7.499999999999999
+    },
+    {
+      "name": "text_animate",
+      "targetTime": 8.7
+    },
+    {
+      "name": "circle",
+      "targetTime": 9.899999999999999
+    }
+  ],
+  "seed": 2165112221
+}
