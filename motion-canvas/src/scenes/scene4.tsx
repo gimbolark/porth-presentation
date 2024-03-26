@@ -23,7 +23,6 @@ import { Code, LezerHighlighter } from '@motion-canvas/2d';
 //Code.defaultHighlighter = new LezerHighlighter(parser);
 
 import { parser } from '@lezer/javascript';
-//import { parser } from 'lezer-porth';
 import { HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 
@@ -39,27 +38,25 @@ const GREEN = "#22863a";
 
 
 const MyStyle = HighlightStyle.define([
-  { tag: tags.keyword, color: BLUE },
+  { tag: tags.keyword, color: RED },
   { tag: tags.function(tags.variableName), color: GRAY },
-  { tag: tags.number, color: WHITE },
-  { tag: tags.content, color: RED },
-  { tag: tags.literal, color: ORANGE },
+  { tag: tags.number, color: BLUE },
   { tag: tags.string, color: BLUE },
-  { tag: tags.atom, color: BLACK },
-  { tag: tags.definitionKeyword, color: ORANGE },
-  { tag: tags.definitionOperator, color: ORANGE },
-
   // ...
 ]);
 
 const MarkdownHighlighter = new LezerHighlighter(parser, MyStyle);
 
-export default makeScene2D(function* (view) {
+
+
+
+
+export default  makeScene2D(function* (view) {
   const codeRef = createRef<Code>();
 
 
   yield view.add(<Code ref={codeRef} code={``} offsetX={-1} x={-360} highlighter={MarkdownHighlighter} />);
-
+  
   yield* beginSlide('include');
   yield* codeRef().code.append(1.2)`include "std.porth"`;
 
@@ -67,33 +64,26 @@ export default makeScene2D(function* (view) {
   yield* codeRef().code.append(1.2)`\nproc main in
 end`;
   yield* beginSlide('Hello World');
-  yield* codeRef().code.insert([2, 0], 1.2)`    0 1 while over N < do
-        let a b in
-          a print
-          b a b +
-        end
-    end
-    drop drop\n`;
+  yield* codeRef().code.insert([2,0],1.2)`    "Hello, World!\\n" puts\n`;
 
   yield* beginSlide('run');
 
   yield* beginSlide('alt');
 
   const consolee = createRef<Code>();
-  yield view.add(<Code ref={consolee} code={`$`} y={300} highlighter={MarkdownHighlighter} />);
+  yield view.add(<Code ref={consolee} code={`$`} y={300} highlighter={MarkdownHighlighter}/>);
   yield* waitFor(0.3);
-  yield* consolee().code.insert([0, 1], `./porth com -r hello_world.porth`, 1.2);
-
-
+  yield* consolee().code.insert([0,1],`./porth com -r hello_world.porth`,1.2);
+  
+  
   yield* beginSlide('alt1');
-  consolee().moveOffset(new Vector2(-1, -1));
-  yield* consolee().code.append(`\n main in  
-  0 1 while over N < do let a b in`, 1.2);
+  consolee().moveOffset(new Vector2(-1, -1)); 
+  yield* consolee().code.append(`\nHello, World!`, 1.2);
 
-  yield* waitFor(0.6);
+  yield* waitFor(0.6); 
 
   yield* beginSlide('alt2');
-  yield* waitFor(0.6);
+  yield* waitFor(0.6); 
 
 
   yield* beginSlide('alt3');
@@ -101,8 +91,8 @@ end`;
 
 
   yield* beginSlide('alt4');
-  yield* waitFor(0.6);
+  yield* waitFor(0.6); 
 
 
-  yield* beginSlide('end');
+  yield* beginSlide('end'); 
 });

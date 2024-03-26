@@ -32,7 +32,7 @@ export default makeScene2D(function* (view) {
   const textStyle = {
     fontWeight: 700,
     fontFamily: 'JetBrains Mono',
-    fontSize: 32,
+    fontSize: 40,
     offsetY: -1,
     padding: 10,
     cache: true,

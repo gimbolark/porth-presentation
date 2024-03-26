@@ -1,73 +1,28 @@
-import {Rect, Txt, makeScene2D} from '@motion-canvas/2d';
-import {
-  Color,
-  all,
-  beginSlide,
-  cancel,
-  createRef,
-  createSignal,
-  easeInOutCubic,
-  loop,
-} from '@motion-canvas/core';
+import {Circle, Layout, Rect, makeScene2D,Txt} from '@motion-canvas/2d';
+import {all, createRef} from '@motion-canvas/core';
 
-const YELLOW = '#FFC66D';
-const RED = '#FF6470';
-const GREEN = '#99C47A';
-const BLUE = '#68ABDF';
+const RED = '#ff6470';
 
 export default makeScene2D(function* (view) {
-  view.fontFamily(`'JetBrains Mono', monospace`).fontWeight(700).fontSize(256);
-  const backdrop = createRef<Rect>();
-  const title = createRef<Txt>();
-  const rotation = createSignal(0);
-  const rotationScale = createSignal(0);
+  const colA = createRef<Rect>();
+  const colB = createRef<Rect>();
+  const rowA = createRef<Layout>();
 
   view.add(
-    <Rect
-      cache
-      ref={backdrop}
-      width={'50%'}
-      height={'50%'}
-      fill={RED}
-      radius={40}
-      smoothCorners
-      rotation={() => rotation() * rotationScale()}
-    >
-      <Txt
-        ref={title}
-        scale={0.5}
-        compositeOperation={'destination-out'}
-        rotation={() => -rotation() * rotationScale()}
-      >
-        START
-      </Txt>
-    </Rect>,
+    <>
+      <Layout layout gap={10} padding={10} width={840} height={440}>
+        <Rect ref={colA} grow={1} fill={'#242424'} radius={4} />
+        <Layout gap={15} direction="column" grow={4}>
+            
+          <Rect grow={2} fill={'#242424'} radius={4} />
+        </Layout>
+        <Rect ref={colB} grow={3} fill={'#242424'} radius={4} />
+      </Layout>
+    </>,
   );
 
-  yield* beginSlide('start');
-  yield* all(
-    backdrop().fill(GREEN, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('60%', 0.6),
-    title().text('CONTENT', 0.6),
-  );
-
-  yield* beginSlide('content');
-  const loopTask = yield loop(Infinity, () => rotation(-5, 1).to(5, 1));
-  yield* all(
-    backdrop().fill(BLUE, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('70%', 0.6),
-    title().text('ANIMATION', 0.6),
-    rotationScale(1, 0.6),
-  );
-
-  yield* beginSlide('animation');
-  yield* all(
-    backdrop().fill(YELLOW, 0.6, easeInOutCubic, Color.createLerp('lab')),
-    backdrop().size.x('50%', 0.6),
-    title().text('FINISH', 0.6),
-    rotationScale(0, 0.6),
-  );
-  cancel(loopTask);
-
-  yield* beginSlide('finish');
+  yield* all(colB().grow(1, 0.8), colA().grow(2, 0.8));
+  //yield* rowA().grow(1, 0.8);
+  yield* all(colB().grow(3, 0.8), colA().grow(1, 0.8));
+  //yield* rowA().grow(8, 0.8);
 });
