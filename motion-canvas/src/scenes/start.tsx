@@ -8,6 +8,7 @@ import {
   createSignal,
   easeInOutCubic,
   loop,
+  waitFor, 
 } from '@motion-canvas/core';
 
 import { Code, LezerHighlighter } from '@motion-canvas/2d';
@@ -37,7 +38,8 @@ const MarkdownHighlighter = new LezerHighlighter(parser,MyStyle);
 
 const PURPLE = "#6f42c1";
 const GRAY = "#6a737d";
-const BLACK = "#24292e";
+const DARK_GRAY = "#24292e";
+const BLACK = "#000000";
 const RED = "#d73a49";
 const ORANGE = "#e36209";
 const BLUE = "#005cc5";
@@ -96,11 +98,14 @@ export default makeScene2D(function* (view) {
       offsetX={0}
       offsetY={-4}
       highlighter={MarkdownHighlighter}
+      fill={BLACK}
       code={`\
 // murat berk yetiştirir 032290008
 // barış ışık            032290004`}
     >
     </Code>,
   );
+  yield* beginSlide('start');
+  yield* waitFor(0.6);
   yield* beginSlide('finish');
 });

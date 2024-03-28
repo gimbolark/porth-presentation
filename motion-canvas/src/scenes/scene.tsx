@@ -32,7 +32,7 @@ export default makeScene2D(function* (view) {
   const textStyle = {
     fontWeight: 700,
     fontFamily: 'JetBrains Mono',
-    fontSize: 40,
+    fontSize: 32,
     offsetY: -1,
     padding: 10,
     cache: true,
@@ -45,7 +45,7 @@ export default makeScene2D(function* (view) {
   const radiusLine = createRef<Line>();
 
   view.add(
-    <Node x={500} ref={preview}>
+    <Node x={400} ref={preview}>
       <Circle
         ref={circle}
       />
@@ -67,7 +67,7 @@ export default makeScene2D(function* (view) {
         x={-960 + 80}
         y={-540 + 80}
         height={1080 - 160}
-        width={960}
+        width={1440}
         clip
       >
         <CodeBlock
@@ -78,7 +78,7 @@ export default makeScene2D(function* (view) {
             ],
           ]}
           ref={code}
-          fontSize={40}
+          fontSize={32}
           lineHeight={36}
           offsetX={-1}
           x={-960 / 2}
