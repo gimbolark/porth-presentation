@@ -61,7 +61,7 @@ export default  makeScene2D(function* (view) {
   const page = createRef<Txt>();
   view.add(
     <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
-      4
+      5
     </Txt>,
   );
   const codeRef = createRef<Code>();
@@ -72,10 +72,7 @@ export default  makeScene2D(function* (view) {
 end`;
   yield* beginSlide('Hello World');
   yield* all(
-    codeRef().code.insert([1, 0], 2.4)`    "Hello, World" puts\n`,
-    codeRef().code.prepend(2.4)`
-include "std.porth"
-\n`,
+    codeRef().code.insert([1, 0], 2.4)`    4 5 + print\n`,
   ) 
 
   yield* beginSlide('run');
@@ -99,7 +96,7 @@ include "std.porth"
     <Rect
       ref={rect} y={-80} x={100} offset={-1} height={100} width={500} offsetX={- 1} offsetY={- 1} fill = { GRAY } radius = { 20} >
       <Rect>
-        <Code ref={output} code={`Hello, World`}  y={0} x={0}  fill={WHITE} fontSize={56} fontFamily={'JetBrains Mono'} />
+        <Code ref={output} code={`9`}  y={0} x={0}  fill={WHITE} fontSize={56} fontFamily={'JetBrains Mono'} />
       </Rect>
     </Rect>
   );
