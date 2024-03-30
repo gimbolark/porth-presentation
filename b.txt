@@ -1,0 +1,44 @@
+1.  Merhabalar arkadaşlar ben Murat Berk Yetiştirir Bilgisayar mühendisliği 2. sınıf öğrencisiyim.
+    Bugün sizlere arkadaşım Barış ile beraber porth dilinden bahsedeceğiz.
+
+2-  
+    Ben sizlere porth dilinin özelliklerinden bahsedip 2 tane basit örnek vereceğim. 
+    Arkadaşım da biraz daha spesifik örnekleri gösterip sonuca bağlayacak.
+
+3-  
+    SORU: Aranızda daha önce porth dilini duyan veya hiç uğraşanınız var mı?
+    
+    Bu aslında çok normal çünkü , Porth dilinin pek de popüler bir dil değil.
+    Mesela VS Code'da Porth extension'ını sadece bin kiş idrimiş ki bunlardan ikisi de biziz.
+
+    Kutepov zamanında büyük şirketlerde çalışırken yaptığı işin ne kadar tek düze ve sıradan olduğu fark edip işten ayrılıyor. 
+    Programlamadan çok hoşlanan biri olduğu için twitch te "Recreational Programming" videoları çekmeye yöneliyor.
+    
+    "Recreational Programming" aslında bu işin monotonluğundan kaçmak; bunu hobi olarak yapmak, yeni bakış açıları kazanmak ve ilginç problemler çözmektir diyebiliriz
+
+    Bu dilde Kutepovun "Recreational Programming" çalışmalarından biridir 
+
+    Bu dil 2021 yılında geliştirilmeye başlanmış fakat birkaç sorundan ötrü geliştirilmesi yarıda kesilmiştir
+
+    Kutepov'un da dediği gibi "It is like forth but in python"  
+    yani işleyiş açısından porth dili forth benziyor ancak 
+    syntax olarak da python dilinden eslinlenmiş 
+    İlerleyen slaytlarda da bunu daha detaylı göreceğiz 
+
+    açık kaynak kodlu olan bu dile Kutepov'un gitlab sayfasından ulaşabilir ve daha detaylı bilgilere oradan ulaşabilirsiniz
+    
+
+4-
+    Gelin şimdi hepimizin dil bağımsız yaptığı ilk örneğe bir de porth açısından bakalım. 
+
+    İlk önce her dilde olduğu gibi main fonksiyonumuzu oluşturuyoruz. 
+    dikkat ederseniz noktalı virgülleri ve parantezleri göremeyeceksiniz. 
+    Bunun sebebi syntax olarak pythona benzemesi.
+
+    Daha sonra std.porth 'standart porth' kütüphanesini ekliyoruz
+     
+    Aşağıda da kodun nasıl derlerdiği ve çalıştırıldığını görüyorsunuz. Yan tarafta da kodun çıktısını görmektesiniz. Basit bir porth örneği görmüş olduk. Devan edelim
+
+5-
+    Gelin şimdi de basit bir toplama işlemine bakalım.
+    

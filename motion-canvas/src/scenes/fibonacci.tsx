@@ -87,7 +87,7 @@ end`;
         end
     end
     drop drop\n`,
-    codeRef().code.prepend(2.4)`const N 40 end\n`,
+    codeRef().code.prepend(2.4)`const N 40000 end\n`,
   ) 
 
   yield* beginSlide('run');
@@ -138,10 +138,15 @@ end`;
     let bWidth = b.toString().length;
 
     if (a < 1) {
-      yield* beginSlide('control'); 
+      yield* beginSlide('append'); 
     }
     
     yield* stack().code.append(anim)`${a.toString()}\n`;
+
+    if (a < 1) {
+      yield* beginSlide('control');
+    }
+
     yield* all(
       stack().code.remove(lines(3), anim),
 
@@ -201,12 +206,18 @@ end`;
       yield* stack().code.replace(word(2, 0, aWidth + bWidth + 3), anim)`${(a + b).toString()}`;
     }
 
+    if (a < 1) {
+      yield* beginSlide('son');
+    }
+
     let temp = b;
     b = a + b;
     a = temp;
   }
-
-
+  
+  yield* beginSlide('drop');
+  
+  yield* stack().code.remove(lines(1, 2), 0.6);
 
   yield* waitFor(0.6);
 

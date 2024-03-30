@@ -1,0 +1,34 @@
+1.  Merhabalar arkadaşlar ben Murat Berk Yetiştirir Bilgisayar mühendisliği 2. sınıf öğrencisiyim.
+    Bugün sizlere arkadaşım Barış ile beraber porth dilinden bahsedeceğiz.
+    SORU: Aranızda daha önce porth dilini duyan
+    veya hiç uğraşanınız var mı?
+
+2-  
+    Bu sunumumu toplamda 6 bölümden oluşuyor. 
+    Ben sizlere porth dilininzelliklerinden bahsedip 2 tane basit örnek vereceğim. 
+    Arkadaşım da diğer örnekleri anlarıp sonuca bağlayacak.
+
+3-  
+    Öncelikle sağda da görmüş olduğunuz üzere porth dili Alexey Kutepov tarafından 2021 yılında geliştirilmeye başlanıyor. 
+    
+    Alexey zamanında büyük şirketlerde çalışırken yaptığı işin ne kadar tek düze ve sıradan olduğu fark edip işten ayrılıyor. Daha sonra hem problemlere farklı bir bakış açısı sağlamak hem de kodlamayı eğlenceli hale getirmek için porth dilini yazıyor. 
+    
+    Alexey'in de dediği gibi "It is like forth but in python"  yani işleyiş açısından porth dili forth benziyor ancak syntax olarak python dilinden esinlenmiştir.İlerleyen slaytlarda da bunu daha detaylı anlatacağım. 
+    
+    Az önce bahsettiğim gibi porth kodlamayı daha eğlenceli bir hale getirmek için yazılmıştır ki biz buna "Recreational Programming" diyoruz. 
+    
+    Alexey porth dilini kodlarken hem youtube hem twitch platformu üzerinden yayın yapıyor. Siz de bu videolara erişebilir gelişim sürecini takip edebilirsiniz. Kendisinin gitlab hesabı resimin altında yazıyor @rexim burada da porth dilinin özellikleri, örnekleri ve genel yapısı hakkında bilgi sahibi olabilirsiniz.
+
+    Port dilinin şu anda  kullanıcı sayısı oldukça az. Örnek verecek olursam hepimizin kullandığı, popüler bir ide olan Visual Studio Code'da Porth extension'ını indiren kişi sayısı 1.000 kişi. Ki bu kişilerden ikisi de biziz.
+
+4-
+    Gelin şimdi hepimizin dil bağımsız yaptığı ilk örneğe bir de porth açısından bakalım. 
+
+    İlk önce her dilde olduğu gibi main fonksiyonumuzu oluşturuyoruz. dikkat ederseniz noktalı virgülleri ve parantezleri göremeyeceksiniz. Bunun sebebi syntax olarak pythona benzemesi.
+    Daha sonra porth kütüphanemizi uygulamamıza entegre ediyoruz. Python'da olduğu gibi porth 'da tablar üzerinde çalışır. Yani 4. satırda kodumuzdan önce bir tab boşluk vermemiz gerekir yoksa kodumuz çalışmaz.  
+
+    Aşağıda da kodun nasıl derlerdiği ve çalıştırıldığını görüyorsunuz. Yan tarafta da kodun çıktısını görmektesiniz. Basit bir porth örneği görmüş olduk. Devan edelim
+
+5-
+    Gelin şimdi de basit bir toplama işlemine bakalım.
+    

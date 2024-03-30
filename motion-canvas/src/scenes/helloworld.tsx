@@ -47,7 +47,7 @@ const MyStyle = HighlightStyle.define([
   { tag: tags.number, color: BLACK },
   { tag: tags.content, color: RED },
   { tag: tags.literal, color: ORANGE },
-  { tag: tags.string, color: PURPLE },
+  { tag: tags.string, color: BLACK },
   { tag: tags.atom, color: BLACK },
   { tag: tags.definitionKeyword, color: ORANGE },
   { tag: tags.definitionOperator, color: ORANGE },
@@ -70,7 +70,7 @@ export default  makeScene2D(function* (view) {
   yield* beginSlide('proc  main');
   yield* codeRef().code.append(1.2)`proc main in
 end`;
-  yield* beginSlide('Hello World');
+  yield* beginSlide('hello');
   yield* all(
     codeRef().code.insert([1, 0], 2.4)`    "Hello, World" puts\n`,
     codeRef().code.prepend(2.4)`
@@ -86,7 +86,7 @@ include "std.porth"
   const consolee = createRef<Code>();
   yield view.add(<Code ref={consolee} code={`$`} y={340} fill={BLACK} />);
   yield* waitFor(0.3);
-  yield* consolee().code.insert([0, 1], `./porth com -r fib.porth`, 1.2);
+  yield* consolee().code.insert([0, 1], `./porth com -r hello.porth`, 1.2);
 
   yield* beginSlide('alt2');
   yield* waitFor(0.6);

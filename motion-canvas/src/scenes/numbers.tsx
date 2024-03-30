@@ -65,14 +65,17 @@ export default  makeScene2D(function* (view) {
     </Txt>,
   );
   const codeRef = createRef<Code>();
-  yield view.add(<Code ref={codeRef} code={``} offsetX={-1} x={-360} highlighter={MarkdownHighlighter} fill={BLACK} fontSize={48} />);
+  yield view.add(<Code ref={codeRef} code={``} offsetX={-1} x={-360} highlighter={MarkdownHighlighter} fill={WHITE} fontSize={48} />);
 
   yield* beginSlide('proc  main');
   yield* codeRef().code.append(1.2)`proc main in
 end`;
-  yield* beginSlide('Hello World');
+  yield* beginSlide('toplama');
   yield* all(
     codeRef().code.insert([1, 0], 2.4)`    4 5 + print\n`,
+    codeRef().code.prepend(2.4)`
+include "std.porth"
+\n`,
   ) 
 
   yield* beginSlide('run');
@@ -83,22 +86,49 @@ end`;
   const consolee = createRef<Code>();
   yield view.add(<Code ref={consolee} code={`$`} y={340} fill={BLACK} />);
   yield* waitFor(0.3);
-  yield* consolee().code.insert([0, 1], `./porth com -r fib.porth`, 1.2);
+  yield* consolee().code.insert([0, 1], `./porth com -r toplama.porth`, 1.2);
 
-  yield* beginSlide('alt2');
+  yield* beginSlide('stack');
   yield* waitFor(0.6);
 
+  const stack = createRef<Code>();
   const rect = createRef<Rect>();
   const output = createRef<Code>();
-  
-  yield* waitFor(0.3);
   yield view.add(
     <Rect
-      ref={rect} y={-80} x={100} offset={-1} height={100} width={500} offsetX={- 1} offsetY={- 1} fill = { GRAY } radius = { 20} >
-      <Rect>
-        <Code ref={output} code={`9`}  y={0} x={0}  fill={WHITE} fontSize={56} fontFamily={'JetBrains Mono'} />
+      ref={rect} y={-230} x={300} height={400} width={300} offsetX={- 1} offsetY={- 1} fill = { GRAY } radius = { 20} >
+      <Rect
+        ref={rect} x={-150} y={-170} height={70} width={300} offsetX={-1} fill={PURPLE} radius={20} >
+        <Code ref={stack} code={`stack\n`} offsetX={-1} offsetY={-1} y={-40} x={-130} highlighter={MarkdownHighlighter} fill={WHITE} fontSize={56} fontFamily=  {'JetBrains Mono'}/>
+      </Rect>
+      <Rect
+        ref={rect} x={-150} y={250} height={70} width={300} offsetX={-1} fill={GRAY} radius={20} >
+        <Code ref={output} code={``} offsetX={-1} offsetY={-1} y={-40} x={-130}  fill={WHITE} fontSize={56} fontFamily={'JetBrains Mono'} />
       </Rect>
     </Rect>
   );
-  yield* beginSlide('alt3');
+  yield* beginSlide('topla');
+
+  let a = 4;
+  let b = 5;
+  let anim = 0.6;
+
+  yield* stack().code.append(0.6)`${a.toString()}\n`;
+  yield* stack().code.append(0.6)`${b.toString()}\n`;
+
+  yield* all(
+    stack().code.remove(lines(1,2), anim),
+    stack().code.append(0.6)`${a.toString()} + ${b .toString()}\n`,
+  );
+  yield* all(
+    stack().code.remove(lines(1), anim),
+    stack().code.append(0.6)`9\n`,
+  );
+  
+  yield* beginSlide('yazdir');
+  yield* all(
+    stack().code.remove(lines(1), anim),
+    output().code.remove(lines(0), anim),
+    output().code.append(anim)`9`,
+  )
 });

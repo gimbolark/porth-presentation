@@ -17,7 +17,7 @@
     "@motion-canvas/2d": "^3.15.1",
     "@motion-canvas/core": "^3.15.1",
     "@motion-canvas/ffmpeg": "^1.1.0",
-    "lezer-porth": "^0.1.5",
+    "lezer-porth": "^0.1.6",
     "sigmoid": "^0.0.1"
   },
   "devDependencies": {

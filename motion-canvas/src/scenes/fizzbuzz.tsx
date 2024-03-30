@@ -51,7 +51,7 @@ const MyStyle = HighlightStyle.define([
   { tag: tags.number, color: BLACK },
   { tag: tags.content, color: RED },
   { tag: tags.literal, color: ORANGE },
-  { tag: tags.string, color: BLUE },
+  { tag: tags.string, color: BLACK },
   { tag: tags.atom, color: BLACK },
   { tag: tags.definitionKeyword, color: ORANGE },
   { tag: tags.definitionOperator, color: ORANGE },
@@ -80,25 +80,31 @@ export default  makeScene2D(function* (view) {
 end`;
   yield* beginSlide('Hello World');
   yield* all(
-    codeRef().code.insert([1, 0], 2.4)`    0 1 while over N < do
-        let a b in
-            a print
-            b a b +
-        end
+    codeRef().code.insert([1, 0], 2.4)`  1 while dup 100 < do
+    dup 15 mod 0 = if
+      "FizzBuzz\\n" puts
+    else dup 3 mod 0 = if*
+      "Fizz\\n" puts
+    else dup 5 mod 0 = if*
+      "Buzz\\n" puts
+    else 
+      dup print
     end
-    drop drop\n`,
-    codeRef().code.prepend(2.4)`const N 40 end\n`,
+    1 +
+  end drop
+`,
+    codeRef().code.prepend(2.4)`include "std.porth"\n`,
   ) 
 
   yield* beginSlide('run');
   yield* codeRef().position.x(-360,1.2).to(-570,1.2);
 
-  yield* beginSlide('alt');
+  //yield* beginSlide('alt');
 
-  const consolee = createRef<Code>();
-  yield view.add(<Code ref={consolee} code={`$`} y={340} fill={BLACK} />);
-  yield* waitFor(0.3);
-  yield* consolee().code.insert([0, 1], `./porth com -r fib.porth`, 1.2);
+  //const consolee = createRef<Code>();
+  //yield view.add(<Code ref={consolee} code={`$`} y={340} fill={BLACK} />);
+  //yield* waitFor(0.3);
+  //yield* consolee().code.insert([0, 1], `./porth com -r fib.porth`, 1.2);
 
   yield* beginSlide('alt2');
   yield* waitFor(0.6);
@@ -121,13 +127,11 @@ end`;
   );
   yield* beginSlide('alt3');
 
-  let a = 0;
-  let b = 1;
+  let a = 1;
   let anim = 0.6;
-  let constN = 2;
+  let constN = 100;
 
   yield* stack().code.append(0.6)`${a.toString()}\n`;
-  yield* stack().code.append(0.6)`${b.toString()}\n`;
   
 
   while (a < constN) {
@@ -135,7 +139,6 @@ end`;
     anim = 1 - ((sigmoid(a)) * 1 - 0.05);
 
     let aWidth = a.toString().length;
-    let bWidth = b.toString().length;
 
     if (a < 1) {
       yield* beginSlide('control'); 
@@ -143,67 +146,12 @@ end`;
     
     yield* stack().code.append(anim)`${a.toString()}\n`;
     yield* all(
-      stack().code.remove(lines(3), anim),
+      stack().code.remove(lines(2), anim),
 
     );
     
-    if (a < 1) {
-      yield* beginSlide('let');
-    }
 
-    yield* stack().code.remove(lines(1,2), anim);
-    yield* stack().code.append(anim)`a = ${a.toString()}\nb = ${b.toString()}\n`;
-
-    if (a < 1) {
-      yield* beginSlide('yazdır');
-    }
-    yield* stack().code.append(anim)`a\n`;
-    yield* all(
-      stack().code.remove(lines(3), anim),
-      output().code.remove(lines(0), anim),
-      output().code.append(anim)`${a.toString()}`,
-    )
-
-    if (a < 1) {
-      yield* beginSlide('alt6');
-    }
-
-    yield* stack().code.append(anim)`b\n`;
-    yield* stack().code.append(anim)`a\n`;
-    yield* stack().code.append(anim)`b\n`;
-
-    if (a < 1) {
-      yield* beginSlide('toplama');
-    }
-
-    yield* all(
-      stack().code.replace(word(4,0,aWidth),'a + b',anim),
-      stack().code.remove(lines(5), anim)
-    );
-
-    if (a < 1) {
-      yield* beginSlide('letisayiyacevirme');
-    }
-    yield* all(
-      stack().code.remove(lines(1, 2), anim),
-      stack().code.replace(word(3, 0, 1), anim)`${b.toString()}`,
-      stack().code.replace(word(4, 0, 5), anim)`${a.toString()} + ${b.toString()}`,
-    );
-    if (a < 1 ) {
-      yield* beginSlide('letisayiyacevirme2');
-    }
-
-    if ((aWidth + bWidth) > 3) {
-      yield* stack().code.replace(word(2, 0, aWidth + bWidth + 3), anim)`${(a + b).toString()}\n`;
-    }
-    else
-    {
-      yield* stack().code.replace(word(2, 0, aWidth + bWidth + 3), anim)`${(a + b).toString()}`;
-    }
-
-    let temp = b;
-    b = a + b;
-    a = temp;
+    a++;
   }
 
 
