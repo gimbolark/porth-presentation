@@ -21,7 +21,7 @@ export default makeScene2D(function* (view) {
   const page = createRef<Txt>();
   view.add(
     <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
-      2
+      8
     </Txt>,
   );
 
@@ -30,15 +30,14 @@ export default makeScene2D(function* (view) {
   view.add(
     <Layout layout alignItems={'center'} height={750} width={1440} direction={'column'}
     justifyContent={'center'}>
-      <Txt fill={'black'} fontSize={75} fontFamily={FONT2} >Bölümler</Txt>
+      <Txt fill={'black'} fontSize={75} fontFamily={FONT2} >sonuç</Txt>
       <Rect alignItems={'center'} justifyContent={'center'} >
         <Rect direction={'column'} marginTop={50}>
           <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 1. Porth nedir?</Txt>
           <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 2. "Hello World" örneği </Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 3. Basit toplama örneği </Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 4. FizzBuzz örneği </Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 5. Fibonacci örneği</Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 6. Sonuç </Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 3. Kullanıcı ismi örneği </Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 4. Fibonacci örneği</Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 5. Sonuç </Txt>
         </Rect>
       </Rect>
       
