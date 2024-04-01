@@ -47,7 +47,7 @@ const MyStyle = HighlightStyle.define([
   { tag: tags.number, color: BLACK },
   { tag: tags.content, color: RED },
   { tag: tags.literal, color: ORANGE },
-  { tag: tags.string, color: PURPLE },
+  { tag: tags.string, color: BLACK },
   { tag: tags.atom, color: BLACK },
   { tag: tags.definitionKeyword, color: ORANGE },
   { tag: tags.definitionOperator, color: ORANGE },
@@ -57,7 +57,7 @@ const MyStyle = HighlightStyle.define([
 
 const MarkdownHighlighter = new LezerHighlighter(parser,MyStyle);
 
-export default  makeScene2D(function* (view) {
+export default    makeScene2D(function* (view) {
   //  page number
   const page = createRef<Txt>();
   view.add(

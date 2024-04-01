@@ -96,7 +96,7 @@ export default  makeScene2D(function* (view) {
 end`;
   yield* beginSlide('Hello World');
   yield* all(
-    codeRef().code.insert([1, 0], 2.4)`  1 while dup 20 < do
+    codeRef().code.insert([1, 0], 2.4)`  1 while dup 16 < do
     dup 15 mod 0 = if
       "FizzBuzz\\n" puts
     else dup 3 mod 0 = if*
@@ -137,7 +137,7 @@ end`;
       </Rect>
       <Rect
         ref={rect} x={-150} y={250} height={70} width={300} offsetX={-1} fill={GRAY} radius={20} >
-        <Code ref={output} code={``} offsetX={-1} offsetY={-1} y={-105} x={-130}  fill={BLACK} fontSize={56} fontFamily={'JetBrains Mono'} />
+        <Code ref={output} code={`\n`} offsetX={-1} offsetY={-1} y={-105} x={-130}  fill={BLACK} fontSize={56} fontFamily={'JetBrains Mono'} />
       </Rect>
     </Rect>
   );
@@ -226,7 +226,7 @@ end`;
     {
       yield* all(
         stack().code.remove(lines(2, 3), anim),
-        stack().code.append(anim)`0`,
+        stack().code.append(anim)`1`,
       );
 
       if (a < control) {
@@ -252,8 +252,26 @@ end`;
     }
     else
     {
+      if (a < control) {
+        yield* beginSlide('else');
+      }
+
       yield* all(
         stack().code.remove(lines(2, 3), anim),
+        stack().code.append(anim)`0\n`,
+      );
+      
+      if (a < control) {
+        yield* beginSlide('else2');
+      }
+
+      yield* stack().code.remove(lines(2, 3), anim);
+
+      if (a < control) {
+        yield* beginSlide('mod 3 init');
+      }
+
+      yield* all(
         stack().code.append(anim)`${a.toString()}\n`,
       );
       // mod 3 init
@@ -264,7 +282,7 @@ end`;
       yield* stack().code.append(anim)`3\n`;
 
       if (a < control) {
-        yield* beginSlide('mod');
+        yield* beginSlide('mod3');
       }
       yield* all(
         stack().code.remove(lines(2, 3), anim),
@@ -272,7 +290,7 @@ end`;
       );
 
       if (a < control) {
-        yield* beginSlide('result');
+        yield* beginSlide('result3');
       }
       yield* all(
         stack().code.remove(lines(2, 2), anim),
@@ -295,7 +313,7 @@ end`;
       if (a % 3 == 0) {
         yield* all(
           stack().code.remove(lines(2, 3), anim),
-          stack().code.append(anim)`0`,
+          stack().code.append(anim)`1`,
         );
 
         if (a < control) {
@@ -320,8 +338,26 @@ end`;
 
       }
       else {
+        if (a < control) {
+          yield* beginSlide('else');
+        }
+
         yield* all(
           stack().code.remove(lines(2, 3), anim),
+          stack().code.append(anim)`0\n`,
+        );
+
+        if (a < control) {
+          yield* beginSlide('else2');
+        }
+
+        yield* stack().code.remove(lines(2, 3), anim);
+
+        if (a < control) {
+          yield* beginSlide('mod 3 init');
+        }
+
+        yield* all(
           stack().code.append(anim)`${a.toString()}\n`,
         );
         // mod 5 init
@@ -363,7 +399,7 @@ end`;
         if (a % 5 == 0) {
           yield* all(
             stack().code.remove(lines(2, 3), anim),
-            stack().code.append(anim)`0`,
+            stack().code.append(anim)`1`,
           );
 
           if (a < control) {
@@ -388,11 +424,39 @@ end`;
 
         }
         else {
+
+          if (a < control) {
+            yield* beginSlide('else');
+          }
+
           yield* all(
             stack().code.remove(lines(2, 3), anim),
-            output().code.remove(lines(1), anim),
+            stack().code.append(anim)`0\n`,
+          );
+
+          if (a < control) {
+            yield* beginSlide('else2');
+          }
+
+          yield* stack().code.remove(lines(2, 2), anim);
+
+          if (a < control) {
+            yield* beginSlide('else init ');
+          }  
+
+          yield* all(
+            stack().code.append(anim)`${a.toString()}\n`,
+          );
+
+          if (a < control) {
+            yield* beginSlide('write out nums ');
+          }  
+
+          yield* all(
+            stack().code.remove(lines(2, 2), anim),
             output().code.append(anim)`${a.toString()}\n`,
           );
+
         }
       }
     }
@@ -424,10 +488,6 @@ end`;
       //output().code.remove(lines(1), anim),
       //output().code.append(anim)`${a.toString()}\n`,
     );
-
-    if (a < control) {
-      yield* beginSlide('loop');
-    }
 
   }
 
