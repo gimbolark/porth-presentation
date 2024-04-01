@@ -118,19 +118,25 @@ include "std.porth"
   yield* stack().code.append(0.6)`${a.toString()}\n`;
   yield* stack().code.append(0.6)`${b.toString()}\n`;
 
+  yield* beginSlide('topla2');
+
   yield* all(
     stack().code.remove(lines(1,2), anim),
     stack().code.append(0.6)`${a.toString()} + ${b .toString()}\n`,
   );
+  
+  yield* beginSlide('topla3');
+
   yield* all(
     stack().code.remove(lines(1), anim),
     stack().code.append(0.6)`9\n`,
   );
   
   yield* beginSlide('yazdir');
-  yield* all(
+  yield* all( 
     stack().code.remove(lines(1), anim),
     output().code.remove(lines(0), anim),
     output().code.append(anim)`9`,
   )
+  yield* beginSlide('son');
 });
