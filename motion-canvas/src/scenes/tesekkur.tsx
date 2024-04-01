@@ -58,7 +58,7 @@ export default makeScene2D(function* (view) {
   //  page number
   const page = createRef<Txt>();
   view.add(
-    <Txt ref={page} fill={DARK_BLUE} scale={0.2} offsetX={0} offsetY={-16}>
+    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} fontWeight={700} >
       9
     </Txt>,
   );

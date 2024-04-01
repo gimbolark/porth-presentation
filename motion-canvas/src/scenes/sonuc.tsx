@@ -20,7 +20,7 @@ export default makeScene2D(function* (view) {
 
   const page = createRef<Txt>();
   view.add(
-    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
+    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} fontWeight={700} >
       8
     </Txt>,
   );
@@ -33,11 +33,9 @@ export default makeScene2D(function* (view) {
       <Txt fill={'black'} fontSize={75} fontFamily={FONT2} >sonuç</Txt>
       <Rect alignItems={'center'} justifyContent={'center'} >
         <Rect direction={'column'} marginTop={50}>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 1. Porth nedir?</Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 2. "Hello World" örneği </Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 3. Kullanıcı ismi örneği </Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 4. Fibonacci örneği</Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}> 5. Sonuç </Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth neden geliştirilmiş</Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth ta basit işlemler</Txt>
+          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth ta örnekler</Txt>
         </Rect>
       </Rect>
       

@@ -59,7 +59,22 @@ const MyStyle = HighlightStyle.define([
   // ...
 ]);
 
+const JsStyle = HighlightStyle.define([
+  { tag: tags.keyword, color: BLUE },
+  { tag: tags.function(tags.variableName), color: GRAY },
+  { tag: tags.number, color: BLACK },
+  { tag: tags.content, color: RED },
+  { tag: tags.literal, color: ORANGE },
+  { tag: tags.string, color: BLUE },
+  { tag: tags.atom, color: BLACK },
+  { tag: tags.definitionKeyword, color: ORANGE },
+  { tag: tags.definitionOperator, color: ORANGE },
+
+  // ...
+]);
+
 const MarkdownHighlighter = new LezerHighlighter(parser, MyStyle);
+const jsHighlighter = new LezerHighlighter(parser, JsStyle);
 
 export default  makeScene2D(function* (view) {
   const logger = useLogger();
@@ -67,7 +82,7 @@ export default  makeScene2D(function* (view) {
   //  page number
   const page = createRef<Txt>();
   view.add(
-    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
+    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} fontWeight={700}>
       7
     </Txt>,
   );
@@ -111,11 +126,11 @@ end`;
       ref={rect} y={-230} x={300} height={400} width={300} offsetX={- 1} offsetY={- 1} fill = { GRAY } radius = { 20} >
       <Rect
         ref={rect} x={-150} y={-170} height={70} width={300} offsetX={-1} fill={PURPLE} radius={20} >
-        <Code ref={stack} code={`stack\n`} offsetX={-1} offsetY={-1} y={-40} x={-130} highlighter={MarkdownHighlighter} fill={WHITE} fontSize={56} fontFamily=  {'JetBrains Mono'}/>
+        <Code ref={stack} code={`stack\n`} offsetX={-1} offsetY={-1} y={-40} x={-130} highlighter={jsHighlighter} fill={BLACK} fontSize={56} fontFamily=  {'JetBrains Mono'}/>
       </Rect>
       <Rect
         ref={rect} x={-150} y={250} height={70} width={300} offsetX={-1} fill={GRAY} radius={20} >
-        <Code ref={output} code={``} offsetX={-1} offsetY={-1} y={-40} x={-130}  fill={WHITE} fontSize={56} fontFamily={'JetBrains Mono'} />
+        <Code ref={output} code={``} offsetX={-1} offsetY={-1} y={-40} x={-130}  fill={BLACK} fontSize={56} fontFamily={'JetBrains Mono'} />
       </Rect>
     </Rect>
   );

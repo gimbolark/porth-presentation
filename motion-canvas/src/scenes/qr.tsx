@@ -21,7 +21,7 @@ export default makeScene2D(function* (view) {
 
   const page = createRef<Txt>();
   view.add(
-    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
+    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} fontWeight={700} >
       10
     </Txt>,
   );
@@ -30,19 +30,16 @@ export default makeScene2D(function* (view) {
   const imageRef = createRef<Img>();
   view.add(
     <Layout layout alignItems={'center'} height={750} width={1440} direction={'column'}>
-      <Txt fill={'black'} fontSize={75} fontFamily={FONT2} >qr</Txt>
+      <Txt fill={RED} fontSize={75} fontFamily={FONT2} fontWeight={700} >kaynaklar</Txt>
       <Rect alignItems={'center'} justifyContent={'center'} >
         <Rect alignItems={'center'} justifyContent={'center'} height={600}
         padding={10} margin={25} direction={'column'} radius={25}>
           <Rect fill={'white'} alignItems={'center'} justifyContent={'center'} height={550} 
         padding={15} margin={25} direction={'column'} radius={25}>
             <Rect fill={'#6a737d'} padding={5} radius={25}>         
-              <Img ref={imageRef} src={"src/images/alexey.png"} height={400} scale={0.7} />
+              <Img ref={imageRef} src={"src/images/frame.png"} height={400} scale={1.58} />
             </Rect>
-            <Rect fill={'white'} padding={5} radius={25} direction={'column'}>         
-              <Txt fill={'black'} fontSize={30} fontFamily={FONT2}>Alexey Kutepov</Txt>
-              <Txt fill={'black'} fontSize={30} fontFamily={FONT2}>@rexim</Txt>
-            </Rect>
+            
           </Rect>
         </Rect>
       </Rect>

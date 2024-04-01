@@ -58,12 +58,14 @@ const MyStyle = HighlightStyle.define([
 const MarkdownHighlighter = new LezerHighlighter(parser,MyStyle);
 
 export default  makeScene2D(function* (view) {
+  //  page number
   const page = createRef<Txt>();
   view.add(
-    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} >
+    <Txt ref={page} fill={DARK_BLUE} scale={1} offsetX={0} offsetY={-16} fontFamily={`'JetBrains Mono', monospace`} fontSize={48} fontWeight={700} >
       5
     </Txt>,
   );
+
   const codeRef = createRef<Code>();
   yield view.add(<Code ref={codeRef} code={``} offsetX={-1} x={-360} highlighter={MarkdownHighlighter} fill={WHITE} fontSize={48} />);
 
