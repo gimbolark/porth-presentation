@@ -42,7 +42,7 @@ const WHITE = "#ffffff";
 const GREEN = "#22863a";
 
 function sigmoid(z: number) {
-  return 1 / (1 + Math.exp(-z/6));
+  return 1 / (1 + Math.exp(-z/2));
 }
 
 const MyStyle = HighlightStyle.define([
@@ -102,13 +102,13 @@ end`;
         end
     end
     drop drop\n`,
-    codeRef().code.prepend(2.4)`const N 40000 end\n`,
+    codeRef().code.prepend(2.4)`const N 400 end\n`,
   ) 
 
   yield* beginSlide('run');
-  yield* codeRef().position.x(-360,1.2).to(-570,1.2);
+  yield* codeRef().position.x(-360,0).to(-570,0.6);
 
-  yield* beginSlide('alt');
+  yield* beginSlide('altar');
 
   const consolee = createRef<Code>();
   yield view.add(<Code ref={consolee} code={`$`} y={340} fill={BLACK} />);
@@ -139,11 +139,14 @@ end`;
   let a = 0;
   let b = 1;
   let anim = 0.6;
-  let constN = 40000;
+  let constN = 400;
 
   yield* stack().code.append(0.6)`${a.toString()}\n`;
   yield* stack().code.append(0.6)`${b.toString()}\n`;
   
+  if (a < 1) {
+    yield* beginSlide('append');
+  }
 
   while (a < constN) {
 
@@ -152,9 +155,6 @@ end`;
     let aWidth = a.toString().length;
     let bWidth = b.toString().length;
 
-    if (a < 1) {
-      yield* beginSlide('append'); 
-    }
     
     yield* stack().code.append(anim)`${a.toString()}\n`;
 

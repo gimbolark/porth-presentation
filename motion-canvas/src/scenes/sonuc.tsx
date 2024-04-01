@@ -30,12 +30,9 @@ export default makeScene2D(function* (view) {
   view.add(
     <Layout layout alignItems={'center'} height={750} width={1440} direction={'column'}
     justifyContent={'center'}>
-      <Txt fill={RED} fontSize={75} fontFamily={FONT2} fontWeight={700}  >sonuç</Txt>
+      <Txt fill={RED} fontSize={100} fontFamily={FONT2} fontWeight={700}  >sonuç</Txt>
       <Rect alignItems={'center'} justifyContent={'center'} >
-        <Rect direction={'column'} marginTop={50}>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth neden geliştirilmiş</Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth ta basit işlemler</Txt>
-          <Txt fill={'black'} fontSize={35} fontFamily={FONT2} marginBottom={10}>porth ta örnekler</Txt>
+        <Rect direction={'column'} marginTop={50}> 
         </Rect>
       </Rect>
       

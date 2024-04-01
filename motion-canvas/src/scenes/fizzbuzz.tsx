@@ -113,7 +113,7 @@ end`;
   ) 
 
   yield* beginSlide('run');
-  yield* codeRef().position.x(-360,1.2).to(-570,1.2);
+  yield* codeRef().position.x(-360,0).to(-570,1.2);
 
   //yield* beginSlide('alt');
 
@@ -252,7 +252,7 @@ end`;
     }
     else
     {
-      if (a < control) {
+      if (a < control ) {
         yield* beginSlide('else');
       }
 
@@ -261,13 +261,13 @@ end`;
         stack().code.append(anim)`0\n`,
       );
       
-      if (a < control) {
+      if (a < control ) {
         yield* beginSlide('else2');
       }
 
       yield* stack().code.remove(lines(2, 3), anim);
 
-      if (a < control) {
+      if (a < control ) {
         yield* beginSlide('mod 3 init');
       }
 
@@ -276,12 +276,12 @@ end`;
       );
       // mod 3 init
       
-      if (a < control) {
+      if (a < control - 1) {
         yield* beginSlide('3');
       }
       yield* stack().code.append(anim)`3\n`;
 
-      if (a < control) {
+      if (a < control - 1) {
         yield* beginSlide('mod3');
       }
       yield* all(
@@ -289,7 +289,7 @@ end`;
         stack().code.append(anim)`${(a).toString()} % 3\n`,
       );
 
-      if (a < control) {
+      if (a < control - 1) {
         yield* beginSlide('result3');
       }
       yield* all(
@@ -297,13 +297,13 @@ end`;
         stack().code.append(anim)`${(a % 3).toString()}\n`,
       );
 
-      if (a < control) {
+      if (a < control - 1) {
         yield* beginSlide('0');
       }
 
       yield* stack().code.append(anim)`0\n`;
 
-      if (a < control) {
+      if (a < control - 1) {
         yield* beginSlide('test');
       }
 
@@ -316,19 +316,19 @@ end`;
           stack().code.append(anim)`1`,
         );
 
-        if (a < control) {
-          yield* beginSlide('went in 3');
+        if (a < control - 1) {
+          yield* beginSlide('went in 5');
         }
 
         yield* stack().code.remove(lines(2), anim);
 
-        if (a < control) {
-          yield* beginSlide('mod');
+        if (a < control - 1) {
+          yield* beginSlide('mod5');
         }
         yield* stack().code.append(anim)`"Fizz\\n"`;
 
-        if (a < control) {
-          yield* beginSlide('result');
+        if (a < control - 1) {
+          yield* beginSlide('result5');
         }
         yield* all(
           stack().code.remove(lines(2), anim),
@@ -338,8 +338,8 @@ end`;
 
       }
       else {
-        if (a < control) {
-          yield* beginSlide('else');
+        if (a < control - 1) {
+          yield* beginSlide('else5');
         }
 
         yield* all(
@@ -347,13 +347,13 @@ end`;
           stack().code.append(anim)`0\n`,
         );
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('else2');
         }
 
         yield* stack().code.remove(lines(2, 3), anim);
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('mod 3 init');
         }
 
@@ -362,12 +362,12 @@ end`;
         );
         // mod 5 init
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('5');
         }
         yield* stack().code.append(anim)`5\n`;
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('mod5');
         }
         yield* all(
@@ -375,7 +375,7 @@ end`;
           stack().code.append(anim)`${(a).toString()} % 5\n`,
         );
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('result5');
         }
         yield* all(
@@ -383,13 +383,13 @@ end`;
           stack().code.append(anim)`${(a % 5).toString()}\n`,
         );
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('05');
         }
 
         yield* stack().code.append(anim)`0\n`;
 
-        if (a < control) {
+        if (a < control - 1) {
           yield* beginSlide('test5');
         }
 
@@ -402,18 +402,18 @@ end`;
             stack().code.append(anim)`1`,
           );
 
-          if (a < control) {
+          if (a < control - 1) {
             yield* beginSlide('went in 5');
           }
 
           yield* stack().code.remove(lines(2), anim);
 
-          if (a < control) {
+          if (a < control - 1) {
             yield* beginSlide('mod5');
           }
           yield* stack().code.append(anim)`"Buzz\\n"`;
 
-          if (a < control) {
+          if (a < control - 1) {
             yield* beginSlide('result5');
           }
           yield* all(
@@ -425,7 +425,7 @@ end`;
         }
         else {
 
-          if (a < control) {
+          if (a < control - 1) {
             yield* beginSlide('else');
           }
 
@@ -434,7 +434,7 @@ end`;
             stack().code.append(anim)`0\n`,
           );
 
-          if (a < control) {
+          if (a < control - 1) {
             yield* beginSlide('else2');
           }
 
