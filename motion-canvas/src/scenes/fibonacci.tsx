@@ -25,7 +25,11 @@ import { Circle, Line, Rect, Node } from '@motion-canvas/2d/lib/components';
 import { Code, LezerHighlighter } from '@motion-canvas/2d';
 //Code.defaultHighlighter = new LezerHighlighter(parser);
 
+<<<<<<< Updated upstream
 //import { parser } from '@lezer/javascript';
+=======
+import { parser } from '@lezer/javascript';
+>>>>>>> Stashed changes
 import { parser } from 'lezer-porth';
 import { HighlightStyle } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
